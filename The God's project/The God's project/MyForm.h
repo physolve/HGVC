@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 namespace project {
 
 	using namespace System;
@@ -100,7 +100,7 @@ namespace project {
 			series2->YAxisType = System::Windows::Forms::DataVisualization::Charting::AxisType::Secondary;
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
-			this->chart1->Size = System::Drawing::Size(331, 300);
+			this->chart1->Size = System::Drawing::Size(350, 332);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -185,7 +185,7 @@ namespace project {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(656, 337);
+			this->ClientSize = System::Drawing::Size(740, 396);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox3);
@@ -213,8 +213,8 @@ namespace project {
 		m = Convert::ToInt32(textBox2->Text);
 		k = Convert::ToInt32(textBox3->Text);
 		*/
-		for (int i = 0; i <= 10; i++)
-			this->chart1->Series["function1"]->Points->AddXY(x[i], y[i]);
+		for (int i = 0; i <o; i++)
+			this->chart1->Series["function1"]->Points->AddXY(x[i], 1);
 
 		/* for (int x = n; x <= m; x++)
 			this->chart1->Series["function2"]->Points->AddXY(x, k*x*x); */
@@ -232,40 +232,40 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 	String^ path = "C:\\temp\\test.txt";
 	String^ a;
-	try
-	{
+	char h;
+	//try
+	//{
+		/*
 		if (File::Exists(path))
 		{
 			File::Delete(path);
 		}
+		
 		StreamWriter^ sw = gcnew StreamWriter(path);
 		try
 		{
-			 sw->WriteLine("This");
-			sw->WriteLine("is");
-			sw->WriteLine("some");
-			sw->WriteLine("text");
+			sw->WriteLine("1");
+			sw->WriteLine("2");
+			sw->WriteLine("3");
+			sw->WriteLine("4");
+			sw->WriteLine("5");
 		}
-
+		
 		 finally
 		{
 			delete sw;
 		}
-
+			 */
 		StreamReader^ sr = gcnew StreamReader(path);
 		try
 		{
 			while (sr->Peek() >= 0)
 			{
 				a = sr->ReadLine();
-				/* if (o < 10)
-				{
-					label1->Text = a;
-					x[o] = Convert::ToInt32(a);
-					
-				}
-				else { label2->Text = a; y[o] = Convert::ToInt32(a); }
-				*/
+				h = Convert::ToChar(a);
+					x[o] = Convert::ToInt32(h);
+				
+				/*
 				switch (o)
 				{
 					case 0:label1->Text = a;
@@ -273,6 +273,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 					case 2:label3->Text = a;
 					case 3:label4->Text = a;
 				}
+				*/
 				o++;
 			}
 		}
@@ -280,12 +281,11 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 		{
 			delete sr;
 		}
-	}
-	catch (Exception^ e)
+	//}
+	/* catch (Exception^ e)
 	{
 		Console::WriteLine("The process failed: {0}", e);
-	}
-
+	}*/
 
 }
 };
