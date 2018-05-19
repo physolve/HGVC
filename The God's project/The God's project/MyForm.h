@@ -9,7 +9,8 @@ namespace project {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO;
-	int m, n, k;
+	int m, n, k,o=0;
+	int x[10], y[10];
 	char buff[50];
 	
 	/// <summary>
@@ -45,6 +46,8 @@ namespace project {
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::TextBox^  textBox3;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Label^  label4;
 	protected:
 
 	private:
@@ -72,6 +75,8 @@ namespace project {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -157,11 +162,32 @@ namespace project {
 			this->textBox3->Size = System::Drawing::Size(154, 20);
 			this->textBox3->TabIndex = 5;
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(12, 28);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(130, 48);
+			this->button2->TabIndex = 6;
+			this->button2->Text = L"button2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(147, 278);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(35, 13);
+			this->label4->TabIndex = 7;
+			this->label4->Text = L"label4";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(656, 337);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
@@ -183,55 +209,15 @@ namespace project {
 		this->chart1->Series["function2"]->Points->Clear();
 		this->chart1->Series["function1"]->Points->Clear();
 	
-			String^ path = "c:\\temp\\MyTest.txt";
-			try
-			{
-				if (File::Exists(path))
-				{
-					File::Delete(path);
-				}
-				StreamWriter^ sw = gcnew StreamWriter(path);
-				try
-				{
-					sw->WriteLine("This");
-					sw->WriteLine("is some text");
-					sw->WriteLine("to test");
-					sw->WriteLine("Reading");
-				}
-				finally
-				{
-					delete sw;
-				}
-
-				StreamReader^ sr = gcnew StreamReader(path);
-				try
-				{
-					while (sr->Peek() >= 0)
-					{
-						Console::WriteLine(sr->ReadLine());
-						
-					}
-				}
-				finally
-				{
-					delete sr;
-				}
-			}
-			catch (Exception^ e)
-			{
-				Console::WriteLine("The process failed: {0}", e);
-			}
-	
-
-		n = Convert::ToInt32(textBox1->Text);
+		/* n = Convert::ToInt32(textBox1->Text);
 		m = Convert::ToInt32(textBox2->Text);
 		k = Convert::ToInt32(textBox3->Text);
+		*/
+		for (int i = 0; i <= 10; i++)
+			this->chart1->Series["function1"]->Points->AddXY(x[i], y[i]);
 
-		for (int x = n; x <= m; x++)
-			this->chart1->Series["function1"]->Points->AddXY(x, k*x);
-
-		for (int x = n; x <= m; x++)
-			this->chart1->Series["function2"]->Points->AddXY(x, k*x*x);
+		/* for (int x = n; x <= m; x++)
+			this->chart1->Series["function2"]->Points->AddXY(x, k*x*x); */
 	}
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 	
@@ -242,5 +228,65 @@ namespace project {
 		button1->Text = "Рисовать";
 
 	}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	String^ path = "C:\\temp\\test.txt";
+	String^ a;
+	try
+	{
+		if (File::Exists(path))
+		{
+			File::Delete(path);
+		}
+		StreamWriter^ sw = gcnew StreamWriter(path);
+		try
+		{
+			 sw->WriteLine("This");
+			sw->WriteLine("is");
+			sw->WriteLine("some");
+			sw->WriteLine("text");
+		}
+
+		 finally
+		{
+			delete sw;
+		}
+
+		StreamReader^ sr = gcnew StreamReader(path);
+		try
+		{
+			while (sr->Peek() >= 0)
+			{
+				a = sr->ReadLine();
+				/* if (o < 10)
+				{
+					label1->Text = a;
+					x[o] = Convert::ToInt32(a);
+					
+				}
+				else { label2->Text = a; y[o] = Convert::ToInt32(a); }
+				*/
+				switch (o)
+				{
+					case 0:label1->Text = a;
+					case 1:label2->Text = a;
+					case 2:label3->Text = a;
+					case 3:label4->Text = a;
+				}
+				o++;
+			}
+		}
+		finally
+		{
+			delete sr;
+		}
+	}
+	catch (Exception^ e)
+	{
+		Console::WriteLine("The process failed: {0}", e);
+	}
+
+
+}
 };
 }
