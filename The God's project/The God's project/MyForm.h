@@ -8,7 +8,10 @@ namespace project {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::IO;
+	int m, n, k;
+	char buff[50];
+	
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
@@ -34,6 +37,15 @@ namespace project {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart1;
+	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  textBox3;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,12 +60,187 @@ namespace project {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"MyForm";
-			this->Padding = System::Windows::Forms::Padding(0);
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
+			this->SuspendLayout();
+			// 
+			// chart1
+			// 
+			chartArea1->AxisY2->MajorGrid->Enabled = false;
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(313, 25);
+			this->chart1->Name = L"chart1";
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->Legend = L"Legend1";
+			series1->Name = L"function1";
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series2->Legend = L"Legend1";
+			series2->Name = L"function2";
+			series2->YAxisType = System::Windows::Forms::DataVisualization::Charting::AxisType::Secondary;
+			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
+			this->chart1->Size = System::Drawing::Size(331, 300);
+			this->chart1->TabIndex = 0;
+			this->chart1->Text = L"chart1";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(151, 25);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(135, 54);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(148, 207);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"label1";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(148, 230);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"label2";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(148, 254);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(35, 13);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"label3";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(145, 97);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(154, 20);
+			this->textBox1->TabIndex = 5;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(145, 123);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(154, 20);
+			this->textBox2->TabIndex = 5;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(145, 149);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(154, 20);
+			this->textBox3->TabIndex = 5;
+			// 
+			// MyForm
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(656, 337);
+			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->chart1);
+			this->Name = L"MyForm";
+			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->chart1->Series["function2"]->Points->Clear();
+		this->chart1->Series["function1"]->Points->Clear();
+	
+			String^ path = "c:\\temp\\MyTest.txt";
+			try
+			{
+				if (File::Exists(path))
+				{
+					File::Delete(path);
+				}
+				StreamWriter^ sw = gcnew StreamWriter(path);
+				try
+				{
+					sw->WriteLine("This");
+					sw->WriteLine("is some text");
+					sw->WriteLine("to test");
+					sw->WriteLine("Reading");
+				}
+				finally
+				{
+					delete sw;
+				}
+
+				StreamReader^ sr = gcnew StreamReader(path);
+				try
+				{
+					while (sr->Peek() >= 0)
+					{
+						Console::WriteLine(sr->ReadLine());
+						
+					}
+				}
+				finally
+				{
+					delete sr;
+				}
+			}
+			catch (Exception^ e)
+			{
+				Console::WriteLine("The process failed: {0}", e);
+			}
+	
+
+		n = Convert::ToInt32(textBox1->Text);
+		m = Convert::ToInt32(textBox2->Text);
+		k = Convert::ToInt32(textBox3->Text);
+
+		for (int x = n; x <= m; x++)
+			this->chart1->Series["function1"]->Points->AddXY(x, k*x);
+
+		for (int x = n; x <= m; x++)
+			this->chart1->Series["function2"]->Points->AddXY(x, k*x*x);
+	}
+	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+	
+
+		label1->Text = "Крайняя точка параболы";
+		label2->Text = "Крайняя точка параболы";
+		label3->Text = "Коэффициент параболы";
+		button1->Text = "Рисовать";
+
+	}
+};
 }
