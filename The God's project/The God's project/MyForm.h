@@ -100,7 +100,7 @@ namespace project {
 			series2->YAxisType = System::Windows::Forms::DataVisualization::Charting::AxisType::Secondary;
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
-			this->chart1->Size = System::Drawing::Size(350, 332);
+			this->chart1->Size = System::Drawing::Size(522, 353);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -185,7 +185,7 @@ namespace project {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(740, 396);
+			this->ClientSize = System::Drawing::Size(847, 396);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox3);
@@ -213,8 +213,8 @@ namespace project {
 		m = Convert::ToInt32(textBox2->Text);
 		k = Convert::ToInt32(textBox3->Text);
 		*/
-		for (int i = 0; i <o; i++)
-			this->chart1->Series["function1"]->Points->AddXY(x[i], 1);
+		for (int i = 0; i <10; i++)
+			this->chart1->Series["function1"]->Points->AddXY(x[i], y[i] );
 
 		/* for (int x = n; x <= m; x++)
 			this->chart1->Series["function2"]->Points->AddXY(x, k*x*x); */
@@ -230,8 +230,10 @@ namespace project {
 	}
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	String^ path = "C:\\temp\\test.txt";
+	String^ path = "C:\\temp\\test2.txt";
 	String^ a;
+	String^ path1 = "C:\\temp\\test3.txt";
+	String^ b;	
 	char h;
 	//try
 	//{
@@ -262,8 +264,8 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			while (sr->Peek() >= 0)
 			{
 				a = sr->ReadLine();
-				h = Convert::ToChar(a);
-					x[o] = Convert::ToInt32(h);
+				//h = Convert::ToChar(a);
+					x[o] = Convert::ToInt32(a);
 				
 				/*
 				switch (o)
@@ -280,6 +282,32 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 		finally
 		{
 			delete sr;
+		}
+		o = 0;
+		StreamReader^ sr1 = gcnew StreamReader(path1);
+		try
+		{
+			while (sr1->Peek() >= 0)
+			{
+				b = sr1->ReadLine();
+				//h = Convert::ToChar(a);
+				y[o] = Convert::ToInt32(b);
+
+				/*
+				switch (o)
+				{
+				case 0:label1->Text = a;
+				case 1:label2->Text = a;
+				case 2:label3->Text = a;
+				case 3:label4->Text = a;
+				}
+				*/
+				o++;
+			}
+		}
+		finally
+		{
+			delete sr1;
 		}
 	//}
 	/* catch (Exception^ e)
