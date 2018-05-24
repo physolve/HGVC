@@ -64,7 +64,7 @@ namespace project {
 	string hour, minute, second, typeclock;
 	string bbb[1000][1000];
 	char filee[10];
-	char *str = new char[1024];
+	char *str = new char [1024];
 
 	int linecount = 0;
 
@@ -594,7 +594,7 @@ namespace project {
 		label13->Text = "";
 
 		for (int i = 0; i < 10; i++)
-		{
+		{	
 			if (x[i] == NULL)
 			{
 				label13->ForeColor = Color::FromArgb(150, Color::Red);
@@ -617,340 +617,340 @@ namespace project {
 		int cherniy;
 		while (!path1.eof())
 		{
-		path1.getline(str, 20, ' ');
-		strs[cherniy] << str[cherniy];
-		//label18->Text = strs[cherniy].ToString();
-		comboBox1->Items->Add(strs[cherniy]);
-		cherniy++;
+			path1.getline(str, 20, ' ');
+			strs[cherniy] << str[cherniy];
+			//label18->Text = strs[cherniy].ToString();
+			comboBox1->Items->Add(strs[cherniy]);
+			cherniy++;
 		}
 		delete str;*/
 
 		//label18->Text = ss[1][0].ToString();
 
-		button1->Text = "Рисовать";
-		button2->Text = "Открыть";
-		label11->Text = "пока ничего не открыто.";
-		label12->Text = "Данные из файла!";
-		label13->Text = "";
-		label14->Text = "Кол-во строк : ";
-		label15->Text = "неизвестно.";
-		label16->Text = "Список x арг.";
-		label17->Text = "Список y арг.";
+			button1->Text = "Рисовать";
+			button2->Text = "Открыть";
+			label11->Text = "пока нечего не открыто.";
+			label12->Text = "Данные из файла!";
+			label13->Text = "";
+			label14->Text = "Кол-во строк : ";
+			label15->Text = "неизвестно.";
+			label16->Text = "Список x арг.";
+			label17->Text = "Список y арг.";
 
-		label1->Text = ""; label2->Text = ""; label3->Text = ""; label4->Text = ""; label5->Text = ""; label6->Text = ""; label7->Text = ""; label8->Text = ""; label9->Text = ""; label10->Text = "";
+			label1->Text = ""; label2->Text = ""; label3->Text = ""; label4->Text = ""; label5->Text = ""; label6->Text = ""; label7->Text = ""; label8->Text = ""; label9->Text = ""; label10->Text = "";
 
 	}
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->chart1->Series["function2"]->Points->Clear();
-		this->chart1->Series["function1"]->Points->Clear();
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->chart1->Series["function2"]->Points->Clear();
+	this->chart1->Series["function1"]->Points->Clear();
 
-		if (!path)
+	if (!path)
+	{
+		label11->ForeColor = Color::FromArgb(150, Color::Red);
+		label11->Text = "Статус: Не открыт!!";
+		MessageBox::Show("Путь к файлу не совпадает!!\nФайл должна быть в диске C\nа название файла test.txt",
+			"Ошибка, вопрос жизни и смерти", MessageBoxButtons::OKCancel,
+			MessageBoxIcon::Asterisk);
+	}
+	else
+	{
+
+
+
+		/*ifstream path1("C:\\test.txt");
+
+		string s;
+
+		while (path1.peek() != EOF) {
+			getline(path1, s);
+			linecount++;
+		}
+		int linecol;
+		linecol = 0;
+
+		while (!path1.eof())
 		{
-			label11->ForeColor = Color::FromArgb(150, Color::Red);
-			label11->Text = "Статус: Не открыт!!";
-			MessageBox::Show("Путь к файлу не совпадает!!\nФайл должна быть в диске C\nа название файла test.txt",
-				"Ошибка, вопрос жизни и смерти", MessageBoxButtons::OKCancel,
-				MessageBoxIcon::Asterisk);
+			path1.getline(str, 1024, '\n');
+			linecol++;
+		}
+		delete str;
+
+		if (!path1)
+		{
+			label14->ForeColor = Color::FromArgb(150, Color::Red);
+			label14->ForeColor = Color::FromArgb(150, Color::Red);
+			label15->Text = "невозможно вычислять!";
 		}
 		else
 		{
-
-
-
-			/*ifstream path1("C:\\test.txt");
-
-			string s;
-
-			while (path1.peek() != EOF) {
-			getline(path1, s);
-			linecount++;
-			}
-			int linecol;
-			linecol = 0;
-
-			while (!path1.eof())
-			{
-			path1.getline(str, 1024, '\n');
-			linecol++;
-			}
-			delete str;
-
-			if (!path1)
-			{
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label15->Text = "невозможно вычислять!";
-			}
-			else
-			{
 			label14->ForeColor = Color::FromArgb(150, Color::Green);
 			label15->ForeColor = Color::FromArgb(150, Color::Green);
 			label15->Text = linecol.ToString();
-			}*/
+		}*/
 
+		
 
-
-			/*		if (linecount == NULL)
-			{
+/*		if (linecount == NULL)
+		{
 			if (!path1)
 			{
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label15->Text = "невозможно вычислять!";
+				label14->ForeColor = Color::FromArgb(150, Color::Red);
+				label14->ForeColor = Color::FromArgb(150, Color::Red);
+				label15->Text = "невозможно вычислять!";
 			}
 			else
 			{
-			label14->ForeColor = Color::FromArgb(150, Color::Green);
-			label15->ForeColor = Color::FromArgb(150, Color::Green);
-			label15->Text = linecol.ToString();
+				label14->ForeColor = Color::FromArgb(150, Color::Green);
+				label15->ForeColor = Color::FromArgb(150, Color::Green);
+				label15->Text = linecol.ToString();
 			}
-			}
-			else
-			{
+		}
+		else
+		{
 			if (!path1)
 			{
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label14->ForeColor = Color::FromArgb(150, Color::Red);
-			label15->Text = "невозможно вычислять!";
+				label14->ForeColor = Color::FromArgb(150, Color::Red);
+				label14->ForeColor = Color::FromArgb(150, Color::Red);
+				label15->Text = "невозможно вычислять!";
 			}
 			else
 			{
-			label14->ForeColor = Color::FromArgb(150, Color::Green);
-			label15->ForeColor = Color::FromArgb(150, Color::Green);
-			label15->Text = linecount.ToString();
+				label14->ForeColor = Color::FromArgb(150, Color::Green);
+				label15->ForeColor = Color::FromArgb(150, Color::Green);
+				label15->Text = linecount.ToString();
 			}
-			}*/
+		}*/
+		
 
+		label11->ForeColor = Color::FromArgb(150, Color::Green);
+		label11->Text = "Статус Файла: Открыт!!";
 
-			label11->ForeColor = Color::FromArgb(150, Color::Green);
-			label11->Text = "Статус Файла: Открыт!!";
+/*		int i = 0; 
+		int j = 0;
 
-			/*		int i = 0;
-			int j = 0;
+		double lala[830][26];
 
-			double lala[830][26];
-
-			while ( !path1.eof() )
-			{
+		while ( !path1.eof() )
+		{
 			path1 >> lala[i][j];
 			i++; j++;
-			}
+		}
 
-			for (int i=0; i<20; i++)
-			{
+		for (int i=0; i<20; i++)
+		{
 			for (int j = 0; j < 20; j++)
 			{
-			comboBox1->Items->Add(lala[i][j]);
+				comboBox1->Items->Add(lala[i][j]);
 			}
-			}
-			*/
-			/*		char hourc[2], minutec[2], secondc[2], typeclockc[2];
-			string hour, minute, second, typeclock;
-			string bbb[1000][1000];
-			char filee[10];
-			*/
+		}
+*/
+/*		char hourc[2], minutec[2], secondc[2], typeclockc[2];
+		string hour, minute, second, typeclock;
+		string bbb[1000][1000];
+		char filee[10];
+*/
 
-			for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
+		{
+			/*for (int j = 0; j < 1; j++)
 			{
-				/*for (int j = 0; j < 1; j++)
-				{
 				path1.getline(hourc, 2, ':');
 				hour[i] = hourc[2];
-				}
-				for (int j = 1; j < 2; j++)
-				{
+			}
+			for (int j = 1; j < 2; j++)
+			{
 				path1.getline(minutec, 2, ':');
 				minute[i] = minutec[2];
-				}
-				for (int j = 2; j < 3; j++)
-				{
+			}
+			for (int j = 2; j < 3; j++)
+			{
 				path1.getline(secondc, 2, ' ');
 				second[i] = secondc[2];
-				}
-				for (int j = 3; j < 4; j++)
-				{
+			}
+			for (int j = 3; j < 4; j++)
+			{
 				path1.getline(typeclockc, 2, ' ');
 				typeclock[i] = typeclockc[2];
-				}
-				*/
-				for (int j = 0; j < 2; j++)
-				{
-					fscanf(path, "%f", &a[i][j]);
-				}
 			}
-
-			/*char hell[10];
-			bbb[0][1] = Convert::ToChar(hell[10]);
-			//hell[10] = bbb[0][1];
 			*/
-
-			label18->Text = a[0][20].ToString();
-
-
-			label1->Text = a[0][0].ToString();
-			label2->Text = a[0][1].ToString();
-			label3->Text = a[1][0].ToString();
-			label4->Text = a[1][1].ToString();
-			label5->Text = a[2][0].ToString();
-			label6->Text = a[2][1].ToString();
-			label7->Text = a[3][0].ToString();
-			label8->Text = a[3][1].ToString();
-			label9->Text = a[4][0].ToString();
-			label10->Text = a[4][1].ToString();
-
-			for (int i = 0; i < 19; i++)
+			for (int j = 0; j < 2; j++)
 			{
-				for (int j = 0; j < 1; j++)
-				{
-					x[i] = a[i][j];
-				}
+				fscanf(path, "%f", &a[i][j]);
 			}
+		}
+		
+		/*char hell[10];
+		bbb[0][1] = Convert::ToChar(hell[10]);
+		//hell[10] = bbb[0][1];
+		*/
 
-			for (int i = 0; i < 19; i++)
+		label18->Text = a[0][20].ToString();
+
+
+		label1->Text = a[0][0].ToString();
+		label2->Text = a[0][1].ToString();
+		label3->Text = a[1][0].ToString();
+		label4->Text = a[1][1].ToString();
+		label5->Text = a[2][0].ToString();
+		label6->Text = a[2][1].ToString();
+		label7->Text = a[3][0].ToString();
+		label8->Text = a[3][1].ToString();
+		label9->Text = a[4][0].ToString();
+		label10->Text = a[4][1].ToString();
+
+		for (int i = 0; i < 19; i++)
+		{
+			for (int j = 0; j < 1; j++)
 			{
-				for (int j = 1; j < 2; j++)
-				{
-					y[i] = a[i][j];
-				}
+				x[i] = a[i][j];
 			}
+		}
 
-			for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 19; i++)
+		{
+			for (int j = 1; j < 2; j++)
 			{
-				for (int j = 0; j < 1; j++)
-				{
-					comboBox1->Items->Add(x[i]);
-				}
+				y[i] = a[i][j];
 			}
+		}
 
-			for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 1; j++)
 			{
-				for (int j = 1; j < 2; j++)
-				{
-					comboBox2->Items->Add(y[i]);
-				}
+				comboBox1->Items->Add(x[i]);
 			}
+		}
 
-			size_t counter = 0;
-			int ch, pre = EOF;
-
-			while ((ch = fgetc(path)) != EOF) {
-				pre = ch;
-
-				if (ch == '\n')
-					++counter;
-			}
-
-			label15->Text = counter.ToString();
-
-
-			/*		for (int i = 0; i < linecount; i++)
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 1; j < 2; j++)
 			{
+				comboBox2->Items->Add(y[i]);
+			}
+		}
+
+		size_t counter = 0;
+		int ch, pre = EOF;
+
+		while ((ch = fgetc(path)) != EOF) {
+			pre = ch;
+
+			if (ch == '\n')
+				++counter;
+		}
+
+		label15->Text = counter.ToString();
+
+
+/*		for (int i = 0; i < linecount; i++)
+		{
 			for (int j=2; j<3; j++)
 			{
-			st2[i] = a[i][j];
+				st2[i] = a[i][j];
 			}
 			for (int j = 3; j<4; j++)
 			{
-			st3[i] = a[i][j];
+				st3[i] = a[i][j];
 			}
 			for (int j = 4; j<5; j++)
 			{
-			st4[i] = a[i][j];
+				st4[i] = a[i][j];
 			}
 			for (int j = 5; j<6; j++)
 			{
-			st5[i] = a[i][j];
+				st5[i] = a[i][j];
 			}
 			for (int j = 6; j<7; j++)
 			{
-			st6[i] = a[i][j];
+				st6[i] = a[i][j];
 			}
 			for (int j = 7; j<8; j++)
 			{
-			st7[i] = a[i][j];
+				st7[i] = a[i][j];
 			}
 			for (int j = 8; j<9; j++)
 			{
-			st8[i] = a[i][j];
+				st8[i] = a[i][j];
 			}
 			for (int j = 9; j<10; j++)
 			{
-			st9[i] = a[i][j];
+				st9[i] = a[i][j];
 			}
 			for (int j = 10; j<11; j++)
 			{
-			st10[i] = a[i][j];
+				st10[i] = a[i][j];
 			}
 			for (int j = 11; j<12; j++)
 			{
-			st11[i] = a[i][j];
+				st11[i] = a[i][j];
 			}
 			for (int j = 12; j<13; j++)
 			{
-			st12[i] = a[i][j];
+				st12[i] = a[i][j];
 			}
 			for (int j = 13; j<14; j++)
 			{
-			st13[i] = a[i][j];
+				st13[i] = a[i][j];
 			}
 			for (int j = 14; j<15; j++)
 			{
-			st14[i] = a[i][j];
+				st14[i] = a[i][j];
 			}
 			for (int j = 15; j<16; j++)
 			{
-			st15[i] = a[i][j];
+				st15[i] = a[i][j];
 			}
 			for (int j = 16; j<17; j++)
 			{
-			st16[i] = a[i][j];
+				st16[i] = a[i][j];
 			}
 			for (int j = 17; j<18; j++)
 			{
-			st17[i] = a[i][j];
+				st17[i] = a[i][j];
 			}
 			for (int j = 18; j<19; j++)
 			{
-			st18[i] = a[i][j];
+				st18[i] = a[i][j];
 			}
 			for (int j = 19; j<20; j++)
 			{
-			st19[i] = a[i][j];
+				st19[i] = a[i][j];
 			}
 			for (int j = 20; j<21; j++)
 			{
-			st20[i] = a[i][j];
+				st20[i] = a[i][j];
 			}
 			for (int j = 21; j<22; j++)
 			{
-			st21[i] = a[i][j];
+				st21[i] = a[i][j];
 			}
 			for (int j = 22; j<23; j++)
 			{
-			st22[i] = a[i][j];
+				st22[i] = a[i][j];
 			}
 			for (int j = 23; j<24; j++)
 			{
-			st23[i] = a[i][j];
+				st23[i] = a[i][j];
 			}
 			for (int j = 24; j<25; j++)
 			{
-			st24[i] = a[i][j];
+				st24[i] = a[i][j];
 			}
 			for (int j = 25; j<26; j++)
 			{
-			st5[i] = a[i][j];
+				st5[i] = a[i][j];
 			}
-			}*/
+		}*/
 
-			//path1.close();
-
-
-
-		}
+	//path1.close();
 
 
-		_fcloseall();
+
 	}
-	};
+
+	
+	_fcloseall();
+}
+};
 }
