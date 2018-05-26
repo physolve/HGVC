@@ -1,9 +1,10 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 
-#define nn 10000
-#define aline 10000
-#define asts 10000
+#define nn 100
+#define aline 100
+#define asts 100
+
 
 #include <string>
 #include <iostream>
@@ -62,13 +63,13 @@ namespace project {
 
 	char hourc[2], minutec[2], secondc[2], typeclockc[2];
 	string hour, minute, second, typeclock;
-	string bbb[1000][1000];
+	//string bbb[1000][1000];
 	char filee[10];
-	char *str = new char[1024];
+	//char *str = new char[1024];
 
 	int linecount = 0;
 
-	FILE* path = fopen("C:\\test.txt", "rt");
+	FILE* path = fopen("C:\\lol\\test.txt", "rt");
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -641,6 +642,7 @@ namespace project {
 
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		int o = 0; 
 		this->chart1->Series["function2"]->Points->Clear();
 		this->chart1->Series["function1"]->Points->Clear();
 
@@ -773,9 +775,15 @@ namespace project {
 				typeclock[i] = typeclockc[2];
 				}
 				*/
+
+
 				for (int j = 0; j < 2; j++)
 				{
-					fscanf(path, "%f", &a[i][j]);
+					if(o==0||o==1)
+					fscanf(path, " %f", &a[i][j]);
+					else
+						fscanf(path, "%f", &a[i][j]);
+					o++;
 				}
 			}
 
@@ -784,7 +792,6 @@ namespace project {
 			//hell[10] = bbb[0][1];
 			*/
 
-			label18->Text = a[0][20].ToString();
 
 
 			label1->Text = a[0][0].ToString();
